@@ -1,4 +1,4 @@
-package no.hvl.dat108.security;
+package no.hvl.dat108.participant;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
