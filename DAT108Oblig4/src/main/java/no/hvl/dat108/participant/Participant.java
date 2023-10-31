@@ -5,21 +5,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import no.hvl.dat108.password.Password;
 
 @Entity
+@Table(schema = "dat108oblig4", name = "participant")
 public class Participant {
-
-	public enum Gender {
-		MALE, FEMALE, OTHER
-	}
 	
 	@Id public String phone;
 	@Embedded private Password password;
 	private String firstname;
 	private String lastname;
-	@Enumerated(EnumType.STRING) private Gender gender;
+	private String gender;
 	
-	public Participant(String phone, Password password, String firstname, String lastname, Gender gender) {
+	public Participant() {}
+	
+	public Participant(String phone, Password password, String firstname, String lastname, String gender) {
 		this.phone = phone;
 		this.password = password;
 		this.firstname = firstname;
@@ -59,11 +60,11 @@ public class Participant {
 		this.lastname = lastname;
 	}
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	

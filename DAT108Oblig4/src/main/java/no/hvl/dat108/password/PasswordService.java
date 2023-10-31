@@ -1,4 +1,4 @@
-package no.hvl.dat108.participant;
+package no.hvl.dat108.password;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -12,7 +12,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PasswordService {
-
+	
+	public Password encryptPassword(String password) {
+		String salt = generateRandomSalt();
+		String hash = hashWithSalt(password, salt);
+		
+		return new Password(hash, salt);
+	}
+	
 	/**
 	 * @return a randomly generated 16 byte salt by using SHA1PRNG
 	 */
@@ -49,7 +56,6 @@ public class PasswordService {
 	 * @return a 64 character long HEX-string which represents a 32 byte/256 bit hash.
 	 */
 	public String hashWithSalt(String password, String salt) { 
-		
 		if (password == null || salt == null) { //should validate properly!!
 			throw new IllegalArgumentException();
 		}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+	<link href="css/simple.css" rel="stylesheet" type="text/css" />
+<!-- <script src="js/myscript.js" defer></script>  -->  
+	<title>Participant registration</title>
+</head>
+
+<body>
+	<h2>Participant registration</h2>
+	<p style="color:red;">Details for registration are invalid</p>
+	<form action="register" method="post">
+		<fieldset>
+		
+			<label>First name</label>
+			<input type="text" name="firstname" value="Lars" />
+			
+			<label>Last name</label>
+			<input type="text" name="lastname" value="Larsen" />
+			
+			<label>Phone (8 digits)</label>
+			<input type="text" name="phone" value="1234" />
+			
+			<label>Password</label>
+			<input type="password" name="password" />
+			<label>Repeat password</label>
+			<input type="password" name="repeatPassword" />
+			
+			<label>Gender</label> 
+			<input type="radio" name="gender" value="male" checked="checked" />male
+			<input type="radio" name="gender" value="female" />female
+			<input type="radio" name="gender" value="other" />other
+			     
+			<br><br><button type="submit">Register</button>
+		</fieldset>
+	</form>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package no.hvl.dat108.participant;
+package no.hvl.dat108.password;
 
 import jakarta.persistence.Embeddable;
 
