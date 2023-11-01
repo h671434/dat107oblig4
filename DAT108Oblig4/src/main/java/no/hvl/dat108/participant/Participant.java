@@ -6,10 +6,10 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import no.hvl.dat108.password.Password;
+import no.hvl.dat108.participant.password.Password;
 
 @Entity
-@Table(schema = "dat108oblig4", name = "participant")
+@Table(schema = "dat108oblig4")
 public class Participant {
 	
 	@Id public String phone;

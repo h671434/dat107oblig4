@@ -1,4 +1,4 @@
-package no.hvl.dat108.password;
+package no.hvl.dat108.participant.password;
 
 import jakarta.persistence.Embeddable;
 
@@ -7,6 +7,8 @@ public class Password {
 	
 	private String hash;
 	private String salt;
+	
+	public Password() {}
 	
 	public Password(String hash, String salt) {
 		this.hash = hash;
@@ -17,8 +19,16 @@ public class Password {
 		return hash;
 	}
 	
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+	
 	public String getSalt() {
 		return salt;
 	}
-
+	
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+		
 }
