@@ -33,18 +33,18 @@ public class RegistrationController {
 			@ModelAttribute("registration") @Valid RegistrationForm registration, 
 			BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			return showErrorMessage(model, "Registration details are invalid");
+			return showMessage(model, "Registration details are invalid.");
 		}
 		
 		if(participantService.phoneExists(registration.getPhone())) {
-			return showErrorMessage(model, "Registration details are invalid");
+			return showMessage(model, "Participant with given phone number already exists.");
 		}
 		
 		return registerAndShowResult(registration, model);
 	}
 	
-	private String showErrorMessage(Model model, String message) {
-		model.addAttribute("errorMessage", message);
+	private String showMessage(Model model, String message) {
+		model.addAttribute("registrationViewMessage", message);
 		
 		return "registration";
 	}

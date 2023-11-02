@@ -7,7 +7,7 @@
 
 <body>
 	<h2>Participant registration</h2>
-	<p style="color:red;">${errorMessage}</p>
+	<p style="color:red;">${registrationViewMessage}</p>
 	<form id="registration" action="registration" method="post">
 		<fieldset>
 			<label>First name</label>

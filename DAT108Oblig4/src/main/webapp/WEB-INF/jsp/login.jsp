@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h2>Login</h2>
-	<p style="color:red;">You are logged out</p>
+	<p style="color:red;">${loginViewMessage}</p>
 	<form id="login" action="login" method="post">
 		<fieldset>
 			<label for="phone">Phone:</label> <input type="text" name="phone" />

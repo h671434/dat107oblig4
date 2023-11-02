@@ -1,8 +1,13 @@
 package dat108.oblig4.participant.login;
 
+import jakarta.validation.constraints.NotNull;
+
 public class LoginForm {
 
+	@NotNull
 	private String phone;
+	
+	@NotNull
 	private String password;
 	
 	public String getPhone() {
