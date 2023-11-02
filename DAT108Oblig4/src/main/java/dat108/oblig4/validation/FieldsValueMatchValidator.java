@@ -1,4 +1,4 @@
-package no.hvl.dat108.validation;
+package dat108.oblig4.validation;
 
 import org.springframework.beans.BeanWrapperImpl;
 

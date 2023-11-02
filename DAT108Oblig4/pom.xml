@@ -8,7 +8,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>no.hvl.dat108</groupId>
+	<groupId>dat108.oblig4</groupId>
 	<artifactId>DAT108Oblig4</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging> <!-- Default er jar -->

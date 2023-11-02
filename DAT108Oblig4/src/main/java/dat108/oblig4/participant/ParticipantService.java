@@ -1,4 +1,4 @@
-package no.hvl.dat108.participant;
+package dat108.oblig4.participant;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import no.hvl.dat108.participant.password.Password;
-import no.hvl.dat108.participant.password.PasswordService;
-import no.hvl.dat108.participant.registration.RegistrationForm;
+import dat108.oblig4.participant.password.Password;
+import dat108.oblig4.participant.password.PasswordService;
+import dat108.oblig4.participant.registration.RegistrationForm;
 
 @Service
 public class ParticipantService {

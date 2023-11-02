@@ -1,4 +1,4 @@
-package no.hvl.dat108;
+package dat108.oblig4;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

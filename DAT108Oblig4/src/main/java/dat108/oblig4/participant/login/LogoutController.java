@@ -1,4 +1,4 @@
-package no.hvl.dat108.participant.login;
+package dat108.oblig4.participant.login;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

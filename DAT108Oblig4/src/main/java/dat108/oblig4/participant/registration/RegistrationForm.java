@@ -1,9 +1,9 @@
-package no.hvl.dat108.participant.registration;
+package dat108.oblig4.participant.registration;
 
+import dat108.oblig4.validation.FieldsValueMatch;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import no.hvl.dat108.validation.FieldsValueMatch;
 
 @FieldsValueMatch(field = "password", fieldMatch = "repeatPassword")
 public class RegistrationForm {
