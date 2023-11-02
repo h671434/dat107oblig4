@@ -1,5 +1,7 @@
 package no.hvl.dat108.participant;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -41,6 +43,10 @@ public class ParticipantService {
 		String hash = passwordService.hashWithSalt(password, salt);
 		
 		return new Password(hash, salt);
+	}
+	
+	public List<Participant> getAllParticipants() {
+		return participantRepo.findAll();
 	}
 	
 }

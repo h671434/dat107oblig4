@@ -9,11 +9,11 @@
 	<h2>Registration successful</h2>
 	<p>Registration recieved for</p>
 	<p>
-		${participant.firstname}<br />
-		${participant.lastname}<br />
-		${participant.phone}<br /> 
-		${participant.gender}
+		${registered.firstname}<br />
+		${registered.lastname}<br />
+		${registered.phone}<br /> 
+		${registered.gender}
 	</p>
-	<a href="participants_list">Go to list of participants</a>
+	<a href="participant_list">Go to list of participants</a>
 </body>
 </html>

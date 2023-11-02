@@ -8,7 +8,7 @@
 <body>
 	<h2>Login</h2>
 	<p style="color:red;">You are logged out</p>
-	<form action="login" method="post">
+	<form id="login" action="login" method="post">
 		<fieldset>
 			<label for="phone">Phone:</label> <input type="text" name="phone" />
 			<label for="password">Password:</label> <input type="password" name="password" />

@@ -33,24 +33,18 @@ public class RegistrationController {
 			@ModelAttribute("registration") @Valid RegistrationForm registration, 
 			BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			return showInvalidRegistrationMessage(model);
+			return showErrorMessage(model, "Registration details are invalid");
 		}
 		
 		if(participantService.phoneExists(registration.getPhone())) {
-			return showParticipantAlreadyExistsMessage(model);
+			return showErrorMessage(model, "Registration details are invalid");
 		}
 		
 		return registerAndShowResult(registration, model);
 	}
 	
-	private String showInvalidRegistrationMessage(Model model) {
-		model.addAttribute("errorMessage", "Registration details are invalid");
-		
-		return "registration";
-	}
-	
-	private String showParticipantAlreadyExistsMessage(Model model) {
-		model.addAttribute("errorMessage", "A participant for that phonenumber already exists");
+	private String showErrorMessage(Model model, String message) {
+		model.addAttribute("errorMessage", message);
 		
 		return "registration";
 	}
@@ -58,7 +52,7 @@ public class RegistrationController {
 	private String registerAndShowResult(RegistrationForm registration, Model model) {
 		Participant registered = participantService.registerNewParticipant(registration);
 		
-		model.addAttribute("participant", registered);
+		model.addAttribute("registered", registered);
 		
 		return "registration_successful";
 	}
