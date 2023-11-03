@@ -7,7 +7,7 @@
 	<title>List of participants</title>
 </head>
 <body>
-    <p>Signed in as: ${user.phone} / ${user.fistname} ${user.lastname}</p>
+    <p>Signed in as: ${currentUserInfo}</p>
 	<h2>List of participants</h2>
 	<table>
 		<tr>

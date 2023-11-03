@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import dat108.oblig4.participant.Participant;
 import dat108.oblig4.participant.ParticipantService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/participant_list")
@@ -19,27 +21,22 @@ public class ParticipantListController {
 	@Autowired ParticipantService participantService;
 	
 	@GetMapping
-	public String getParticipantsList(Model model) {
+	public String getParticipantsList(HttpServletRequest request, Model model) {
+		Participant user = (Participant) request.getSession().getAttribute("user");
 		
-		// hent sesjondata
-		// ikke innlogget? redirect -> /login 
-		populateList(model);
+		if(user == null) {
+			return "redirect:logout";
+		}
+
+		model.addAttribute("currentUserInfo", user.phone + " / " + user.getFullName());
+		model.addAttribute("allParticipants", participantService.getAllParticipants());
 		
 		return "participant_list";
 	}
 	
-	private void populateList(Model model) {
-		List<Participant> allParticipants = participantService.getAllParticipants();
-		
-		model.addAttribute("allParticipants", allParticipants);
-	}
  	
 	@PostMapping
 	public String doSomething() {
-		
-		// ikke innlogget? redirect -> /login
-		// oppdater sesjon?
-		
 		return "redirect:participant_list";
 	}
 	

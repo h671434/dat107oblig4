@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import dat108.oblig4.participant.Participant;
 import dat108.oblig4.participant.ParticipantService;
+import dat108.oblig4.participant.login.LoginUtil;
 import dat108.oblig4.participant.password.Password;
 import dat108.oblig4.participant.password.PasswordService;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Id;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -29,8 +32,8 @@ public class RegistrationController {
 	}
 	
 	@PostMapping("/registration")
-	public String recieveRegistration(
-			@ModelAttribute("registration") @Valid RegistrationForm registration, 
+	public String recieveRegistration(HttpServletRequest request, 
+			@ModelAttribute("registration") @Valid RegistrationForm registration,
 			BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return showMessage(model, "Registration details are invalid.");
@@ -40,7 +43,11 @@ public class RegistrationController {
 			return showMessage(model, "Participant with given phone number already exists.");
 		}
 		
-		return registerAndShowResult(registration, model);
+		Participant registered = participantService.registerNewParticipant(registration);
+		
+		LoginUtil.logInUser(request, registered);	
+		
+		return showSuccessfulRegistration(model, registered);
 	}
 	
 	private String showMessage(Model model, String message) {
@@ -49,10 +56,8 @@ public class RegistrationController {
 		return "registration";
 	}
 	
-	private String registerAndShowResult(RegistrationForm registration, Model model) {
-		Participant registered = participantService.registerNewParticipant(registration);
-		
-		model.addAttribute("registered", registered);
+	private String showSuccessfulRegistration(Model model, Participant registered)  {
+		model.addAttribute("registered", registered);	
 		
 		return "registration_successful";
 	}

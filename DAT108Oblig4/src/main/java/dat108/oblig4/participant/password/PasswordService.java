@@ -68,6 +68,13 @@ public class PasswordService {
 		return DatatypeConverter.printHexBinary(keyhash);
 	}
 	
+	public Password encryptPassword(String password) {
+		String salt = generateRandomSalt();
+		String hash = hashWithSalt(password, salt);
+		
+		return new Password(hash, salt);
+	}
+	
 	/**
 	 * Sjekker om et password matcher en hash generert med korresponderende 
 	 * hashMedSalt(). 
@@ -77,13 +84,14 @@ public class PasswordService {
 	 * @param hash - The "saved" password 
 	 * @return true if password matches
 	 */
-	public boolean isCorrectPassword(
-			String password, String salt, String hash) {
+	public boolean isCorrectPassword(String attemptedPassword, Password actualPassword) {
+		String hash = actualPassword.getHash();
+		String salt = actualPassword.getSalt();
 		
-		if (password == null || salt == null || hash == null) {  //should validate properly!!
+		if (attemptedPassword == null || salt == null || hash == null) {  //should validate properly!!
 			throw new IllegalArgumentException();
 		}
 		
-		return hash.equals(hashWithSalt(password, salt));
+		return hash.equals(hashWithSalt(attemptedPassword, salt));
 	}
 }

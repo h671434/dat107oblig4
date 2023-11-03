@@ -27,6 +27,10 @@ public class Participant {
 		this.lastname = lastname;
 		this.gender = gender;
 	}
+	
+	public String getFullName() {
+		return firstname + " " + lastname;
+	}
 
 	public String getPhone() {
 		return phone;

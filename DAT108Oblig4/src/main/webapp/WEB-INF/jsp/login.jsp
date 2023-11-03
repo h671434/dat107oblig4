@@ -13,6 +13,7 @@
 			<label for="phone">Phone:</label> <input type="text" name="phone" />
 			<label for="password">Password:</label> <input type="password" name="password" />
 			<br><br><button type="submit" >Sign in</button>
+			<br><br><a href="registration">Not registered? Sign up here.</a>
 		</fieldset>
 	</form>
 

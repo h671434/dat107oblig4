@@ -13,8 +13,10 @@ public class LogoutController {
 
 	@PostMapping
 	public String logOut(HttpSession session, RedirectAttributes ra) {
-		// invalider session
+		LoginUtil.logOutUser(session);
 		
+		ra.addFlashAttribute("loginViewMessage", "You are logged out");
+
 		return "redirect:login";
 	}
 	
