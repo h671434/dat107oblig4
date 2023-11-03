@@ -10,6 +10,13 @@ public class LoginForm {
 	@NotNull
 	private String password;
 	
+	public LoginForm() {}
+	
+	public LoginForm(String phone, String password) {
+		this.phone = phone;
+		this.password = password;
+	}
+
 	public String getPhone() {
 		return phone;
 	}

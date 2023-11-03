@@ -164,6 +164,7 @@
 			}
 			
 			valid = validateFirstName() && validateLastName() && validatePhone() && validatePassword() && validateRepeatPassword() && validateGender();
+			
 			console.log(valid);
 			
 			return valid;

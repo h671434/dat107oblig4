@@ -1,5 +1,7 @@
 package dat108.oblig4.participant;
 
+import java.util.Objects;
+
 import dat108.oblig4.participant.password.Password;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -70,6 +72,25 @@ public class Participant {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstname, gender, lastname, password, phone);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		
+		Participant other = (Participant) obj;
+		
+		return this.phone.equals(other.phone);
 	}
 	
 }
