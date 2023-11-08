@@ -1,6 +1,7 @@
 package main.controller;
 
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import main.user.Password;
 import main.user.PasswordService;
@@ -31,7 +32,12 @@ public class RegisterController {
     }
 
     @GetMapping(value = "/register")
-    public String getRegisterConfirmation() {
+    public String getRegisterConfirmation(
+            HttpSession session
+    ) {
+        if(session.getAttribute("user") == null){
+            return "index";
+        }
         return "register";
     }
 
@@ -44,7 +50,8 @@ public class RegisterController {
     public String addUser(
             @Valid @ModelAttribute("person") RawInput rawInput,
             BindingResult bindingResult,
-            RedirectAttributes ra
+            RedirectAttributes ra,
+            HttpSession session
             ){
 
         boolean equalPass = rawInput.getPassword().equals(rawInput.getConfirmPassword());
@@ -55,7 +62,7 @@ public class RegisterController {
                     .stream()
                     .map(DefaultMessageSourceResolvable::getDefaultMessage)
                     .reduce("", (e, f) -> e + f + "<br>");
-            errors = equalPass ? errors + "The passwords are not equal" : errors;
+            errors = equalPass ? errors : errors + " the passwords are not equal";
             //dunno if errors should be added here
             System.out.println(errors);
             ra.addFlashAttribute("errors", "unable to register");
@@ -65,6 +72,7 @@ public class RegisterController {
         Password password = passwordService.encryptPassword(rawInput.getPassword());
 
         User u = new User(rawInput, password);
+        session.setAttribute("user", u);
 
         userService.registerUser(u);
         System.out.println(u);
@@ -74,9 +82,5 @@ public class RegisterController {
     }
 
 
-    @GetMapping("showAttendees")
-    public String attendees(){
-        return users;
-    }
 }
 

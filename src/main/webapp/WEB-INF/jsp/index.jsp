@@ -34,8 +34,8 @@
     <fieldset>
         <legend>Login</legend>
         <form action="login" method="post">
-            <label for="loginUsername">Username:</label>
-            <input type="text" id="loginUsername" name="loginUsername" required><br>
+            <label for="loginPhone">Phone number:</label>
+            <input type="text" id="loginPhone" name="loginPhone" required><br>
             <label for="loginPassword">Password:</label>
             <input type="password" id="loginPassword" name="loginPassword" required><br>
             <button type="submit">Login</button>
