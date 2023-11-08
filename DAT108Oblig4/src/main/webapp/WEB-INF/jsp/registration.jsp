@@ -8,7 +8,7 @@
 <body>
 	<h2>Participant registration</h2>
 	<p style="color:red;">${registrationViewMessage}</p>
-	<form id="registration" action="registration" onsubmit="event.preventDefault(); validateForm();" method="post">
+	<form id="registration" action="registration" onsubmit="return validateForm();" method="post">
 		<fieldset>
 			<label>First name</label>
 			<input id="firstname" type="text" name="firstname" value="${registration.firstname}"/>
@@ -25,7 +25,7 @@
 			<input id="repeatPassword" type="password" name="repeatPassword" value="${registration.repeatPassword}" />
 			
 			<label>Gender</label> 
-			<input id="gender" type="radio" name="gender" value="Male" value="${registration.gender}" checked/>Male
+			<input type="radio" name="gender" value="Male" value="${registration.gender}" checked/>Male
 			<input type="radio" name="gender" value="Female" value="${registration.gender}" />Female
 			     
 			<br><br><button type="submit">Register</button>
@@ -91,7 +91,7 @@
 			}
 			
 			function validatePhone() {
-				const phoneRegExp = /^\\d{8}$/;
+				const phoneRegExp = /^\d{8}$/;
 				const phone = document.getElementById("phone");
 				
 				if(isEmpty(phone.value)) {
@@ -105,7 +105,7 @@
 					return false;
 				}
 				
-				phone.setCostumValidity("");
+				phone.setCustomValidity("");
 				phone.reportValidity();
 				return true;
 			}
@@ -126,7 +126,7 @@
 				
 				password.setCustomValidity("");
 				password.reportValidity();
-				return false;
+				return true;
 			}
 			
 			function validateRepeatPassword() {
@@ -150,17 +150,32 @@
 			}
 			
 			function validateGender(maleInput, femaleInput) {
-				const gender = document.getElementById("gender");
+				const gender = document.getElementsByName('gender');
 
-				if(isEmpty(gender.value) || (gender.value !== "Male" || gender.value !== "Female")) {
-					gender.setCustomValidity("Gender must be either Male or Female");
-					gender.reportValidity();
-					return false;
+				let anyChecked = false;
+				
+				for(let i = 0, length = gender.length; i < length; i++) {
+					if (gender[i].checked) {
+						anyChecked = true;
+				   		break;
+				  	}
 				}
 				
-				gender.setCustomValidity("");
-				gender.reportValidity();
-				return true;
+				for(let i = 0, length = gender.length; i < length; i++) {
+					if (anyChecked) {
+						gender[i].setCustomValidity("");
+						gender[i].reportValidity();
+				  	} else {
+						gender[i].setCustomValidity("Gender must be either Male or female");
+						gender[i].reportValidity()
+				  	}
+				}
+
+				if(anyChecked) {
+					return true;
+				}
+				
+				return false;
 			}
 			
 			valid = validateFirstName() && validateLastName() && validatePhone() && validatePassword() && validateRepeatPassword() && validateGender();

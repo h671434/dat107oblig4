@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 @Controller
 public class RegistrationController {
 
-	@Autowired ParticipantService participantService;
+	@Autowired private ParticipantService participantService;
 	
 	@GetMapping("/registration")
 	public String getRegistrationForm() {
@@ -46,7 +46,7 @@ public class RegistrationController {
 		Participant registered = participantService.registerNewParticipant(registration);
 		
 		LoginUtil.logInUser(request, registered);	
-		
+
 		return showSuccessfulRegistration(model, registered);
 	}
 	

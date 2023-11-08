@@ -23,7 +23,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/login")
 public class LoginController {
 
-	@Autowired ParticipantService participantService;
+	@Autowired private ParticipantService participantService;
 	
 	@GetMapping
 	public String getLoginForm() {

@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/participant_list")
 public class ParticipantListController {
 
-	@Autowired ParticipantService participantService;
+	@Autowired private ParticipantService participantService;
 	
 	@GetMapping
 	public String getParticipantsList(HttpServletRequest request, Model model) {
@@ -33,12 +33,5 @@ public class ParticipantListController {
 		
 		return "participant_list";
 	}
-	
- 	
-	@PostMapping
-	public String doSomething() {
-		return "redirect:participant_list";
-	}
-	
 
 }
