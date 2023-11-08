@@ -1,11 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Login and Registration</title>
+    <title>Greeting Page</title>
 </head>
 <body>
-<h1>you have successfully been registered </h1>
-<p></p>
+<h1>Welcome, ${user.firstName}!</h1>
+<p>Click <a href="<%= request.getContextPath() %>/showAttendees">here</a> to see all attendees.</p>
 </body>
 </html>

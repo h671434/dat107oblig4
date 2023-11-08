@@ -66,12 +66,17 @@ public class RegisterController {
 
         User u = new User(rawInput, password);
 
-        //userService.registerUser(u);
+        userService.registerUser(u);
         System.out.println(u);
-
-        //ra.addFlashAttribute("user", person);
+        ra.addFlashAttribute("user", u);
 
         return "redirect:register";
+    }
+
+
+    @GetMapping("showAttendees")
+    public String attendees(){
+        return users;
     }
 }
 
