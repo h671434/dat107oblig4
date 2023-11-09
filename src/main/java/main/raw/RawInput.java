@@ -32,7 +32,7 @@ public class RawInput {
 
 
     @NotNull
-    @Pattern(regexp = "^M|K$")
+    @Pattern(regexp = "^M|F$")
     private String gender;
 
 

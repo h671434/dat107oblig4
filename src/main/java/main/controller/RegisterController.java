@@ -64,7 +64,6 @@ public class RegisterController {
                     .reduce("", (e, f) -> e + f + "<br>");
             errors = equalPass ? errors : errors + " the passwords are not equal";
             //dunno if errors should be added here
-            System.out.println(errors);
             ra.addFlashAttribute("errors", "unable to register");
             return "redirect:index";
         }
