@@ -26,7 +26,13 @@ public class LoginController {
 	@Autowired private ParticipantService participantService;
 	
 	@GetMapping
-	public String getLoginForm() {
+	public String getLoginForm(HttpServletRequest request, Model model) {
+		Participant user = (Participant) request.getSession().getAttribute("user");
+		
+		if(user != null) {
+			return "redirect:participant_list";
+		}
+		
 		return "login";
 	}
 	

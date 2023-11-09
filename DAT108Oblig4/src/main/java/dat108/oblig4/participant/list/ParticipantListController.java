@@ -25,7 +25,7 @@ public class ParticipantListController {
 		Participant user = (Participant) request.getSession().getAttribute("user");
 		
 		if(user == null) {
-			return "redirect:logout";
+			return "redirect:login";
 		}
 
 		model.addAttribute("currentUserInfo", user.phone + " / " + user.getFullName());

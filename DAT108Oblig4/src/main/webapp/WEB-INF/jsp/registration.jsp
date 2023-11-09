@@ -14,7 +14,7 @@
 			<input id="firstname" type="text" name="firstname" value="${registration.firstname}"/>
 			
 			<label>Last name</label>
-			<input id="lastname" type="text" 	name="lastname" value="${registration.lastname}" />
+			<input id="lastname" type="text" name="lastname" value="${registration.lastname}" />
 			
 			<label>Phone (8 digits)</label>
 			<input id="phone" type="text" name="phone" value="${registration.phone}" />
@@ -37,7 +37,7 @@
 		function validateForm() {
 			function validateFirstName() {
 				const firstnameRegExp = /^[A-ZÆØÅ][A-ZÆØÅa-zæøå\- ]+$/;
-				const firstname = document.getElementById("firstname");
+				let firstname = document.getElementById("firstname");
 				
 				if(isEmpty(firstname.value)) {
 					firstname.setCustomValidity("First name is required");
@@ -45,12 +45,12 @@
 					return false;
 				}
 				if(firstname.value.length < 2 && firstname.value.length > 20) {
-					lastname.setCustomValidity("First name must be between 2 and 20 characters");
+					firstname.setCustomValidity("First name must be between 2 and 20 characters");
 					firstname.reportValidity();
 					return false;
 				}
 				if(!firstnameRegExp.test(firstname.value)) {
-					lastname.setCustomValidity("First name can only contain letters A-å, - and space");
+					firstname.setCustomValidity("First name can only contain letters A-å, - and space");
 					firstname.reportValidity();
 					return false;
 				}
@@ -67,7 +67,7 @@
 			
 			function validateLastName() {
 				const lastnameRegExp = /^[A-ZÆØÅ][A-ZÆØÅa-zæøå\-]+$/;
-				const lastname = document.getElementById("lastname")
+				let lastname = document.getElementById("lastname")
 				
 				if(isEmpty(lastname.value)) {
 					lastname.setCustomValidity("Last name is required");
@@ -92,7 +92,7 @@
 			
 			function validatePhone() {
 				const phoneRegExp = /^\d{8}$/;
-				const phone = document.getElementById("phone");
+				let phone = document.getElementById("phone");
 				
 				if(isEmpty(phone.value)) {
 					phone.setCustomValidity("Phone is required");
@@ -111,7 +111,7 @@
 			}
 			
 			function validatePassword() {
-				const password = document.getElementById("password");
+				let password = document.getElementById("password");
 				
 				if(isEmpty(password.value)) {
 					password.setCustomValidity("Password is required");
@@ -130,8 +130,8 @@
 			}
 			
 			function validateRepeatPassword() {
-				const repeatPassword = document.getElementById("repeatPassword");
-				const password = document.getElementById("password");
+				let repeatPassword = document.getElementById("repeatPassword");
+				let password = document.getElementById("password");
 				
 				if(isEmpty(repeatPassword.value)) {
 					repeatPassword.setCustomValidity("Repeat password is required");
@@ -150,7 +150,7 @@
 			}
 			
 			function validateGender(maleInput, femaleInput) {
-				const gender = document.getElementsByName('gender');
+				let gender = document.getElementsByName('gender');
 
 				let anyChecked = false;
 				

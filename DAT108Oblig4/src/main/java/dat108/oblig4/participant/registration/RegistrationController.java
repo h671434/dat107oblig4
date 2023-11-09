@@ -27,7 +27,13 @@ public class RegistrationController {
 	@Autowired private ParticipantService participantService;
 	
 	@GetMapping("/registration")
-	public String getRegistrationForm() {
+	public String getRegistrationForm(HttpServletRequest request, Model model) {
+		Participant user = (Participant) request.getSession().getAttribute("user");
+		
+		if(user != null) {
+			return "redirect:participant_list";
+		}
+		
 		return "registration";
 	}
 	
